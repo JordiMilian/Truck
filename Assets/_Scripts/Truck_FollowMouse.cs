@@ -67,11 +67,15 @@ public class Truck_FollowMouse : MonoBehaviour
             
             StartCoroutine(SpriteRedFlash(TruckSprite));
             
-            Vector2 direction = (transform.position - collision.gameObject.transform.position).normalized;
-            rigidbody.AddForce(direction * CrashPush * road.BaseSpeed);
+            ReceiveDamage(collision.gameObject);
 
-            road.BaseSpeed -= CrashDecelerator;
             Destroy(collision.gameObject);
+        }
+        if (collision.CompareTag("Obstacle_Permanent"))
+        {
+            StartCoroutine(SpriteRedFlash(TruckSprite));
+
+            ReceiveDamage(collision.gameObject);
         }
     }
     IEnumerator SpriteRedFlash(SpriteRenderer sprite)
@@ -79,5 +83,12 @@ public class Truck_FollowMouse : MonoBehaviour
         sprite.color = Color.red;
         yield return new WaitForSeconds(0.3f);
         sprite.color = Color.white;
+    }
+    void ReceiveDamage(GameObject attacker)
+    {
+        Vector2 direction = (transform.position - attacker.transform.position).normalized;
+        rigidbody.AddForce(direction * CrashPush * road.BaseSpeed);
+
+        road.BaseSpeed -= CrashDecelerator;
     }
 }

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RoadRespawn
   - Obstacle
+  - Obstacle_Permanent
   layers:
   - Default
   - TransparentFX

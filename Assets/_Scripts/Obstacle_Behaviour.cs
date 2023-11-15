@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Obstacle_Behaviour : MonoBehaviour
 {
-    [SerializeField] float horizontalSpeed;
+    public float horizontalSpeed = 5; 
+    public float horizontalAxis; 
     [SerializeField] float VerticalSpeed;
     [SerializeField] Road_Speed road;
     
@@ -20,7 +21,8 @@ public class Obstacle_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float velocity = road.RoadSpeed ;
-        transform.Translate(0, -velocity , 0);
+        float velocity_Y = road.RoadSpeed ;
+        float velocity_X = horizontalAxis * horizontalSpeed * Time.deltaTime;
+        transform.Translate(velocity_X, -velocity_Y , 0);
     }
 }

@@ -7,6 +7,7 @@ public class Road_Infinite02 : MonoBehaviour
    
     [SerializeField] Transform OtherRoadSpawnPoint;
     [SerializeField] Road_Speed roadSpeed;
+    
 
     void Update()
     {
