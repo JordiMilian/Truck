@@ -13,6 +13,7 @@ public class Road_Speed : MonoBehaviour
     void Update()
     {
         RoadSpeed = BaseSpeed * Time.deltaTime;
+
         TimePassed += Time.deltaTime;
         TraveledDistance += RoadSpeed * TimePassed * 0.1f;
         
